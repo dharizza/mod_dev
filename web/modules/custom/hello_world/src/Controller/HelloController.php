@@ -3,6 +3,8 @@
 namespace Drupal\hello_world\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 
 /**
@@ -19,7 +21,9 @@ class HelloController extends ControllerBase {
       $node = Node::load($nid);
       if ($node) {
         $title = $node->getTitle();
-        $output = $this->t('Hello :name! The node title is :title', [':name' => $name, ':title' => $title]);
+        $url = Url::fromRoute('entity.node.canonical', ['node' => $nid]);
+        $internal_link = Link::fromTextAndUrl($title, $url)->toString();
+        $output = $this->t('Hello :name! The node is @link', [':name' => $name, '@link' => $internal_link]);
       }
       else {
         $output = $this->t('Hello :name! There is no node with ID :nid', [':name' => $name, ':nid' => $nid]);

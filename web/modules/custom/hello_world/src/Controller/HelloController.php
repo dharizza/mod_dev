@@ -12,10 +12,10 @@ class HelloController extends ControllerBase {
   /**
    * Returns output for hello world.
    */
-  public function hello() {
+  public function hello($name) {
     return [
       '#type' => 'markup',
-      '#markup' => $this->t('Hello class!'),
+      '#markup' => $this->t('Hello :name!', [':name' => $name]),
     ];
   }
 

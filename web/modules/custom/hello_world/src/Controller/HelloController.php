@@ -15,7 +15,7 @@ class HelloController extends ControllerBase {
   public function hello() {
     return [
       '#type' => 'markup',
-      '#markup' => '<h2>Hello World!</h2>',
+      '#markup' => $this->t('Hello class!'),
     ];
   }
 

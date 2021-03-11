@@ -1,5 +1,5 @@
 hello_world.hello_controller:
-  path: 'hello/{name}'
+  path: 'hello/{name}/{nid}'
   defaults:
     _controller: 'Drupal\hello_world\Controller\HelloController::hello'
     _title: 'Hello World'

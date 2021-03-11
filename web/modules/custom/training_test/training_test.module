@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ *
+ * Hooks implementations for training_test module.
+ */
+
+
+function training_test_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'node_page_form') {
+    ksm($form);
+  }
+}

@@ -10,4 +10,9 @@
   */
 function hello_world_form_node_article_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
   $form['options']['#open'] = TRUE;
+
+  $user = \Drupal::currentUser();
+  if (!$user->hasPermission('administer content')) {
+    $form['field_tags']['#access'] = FALSE;
+  }
 }

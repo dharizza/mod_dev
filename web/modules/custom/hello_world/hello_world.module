@@ -6,10 +6,8 @@
  */
 
  /**
-  * Implements hook_form_alter().
+  * Implements hook_form_FORM_ID_alter().
   */
-function hello_world_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  if ($form_id == "node_article_form") {
-    $form['options']['#open'] = TRUE;
-  }
+function hello_world_form_node_article_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['options']['#open'] = TRUE;
 }

@@ -16,3 +16,13 @@ function hello_world_form_node_article_form_alter(&$form, \Drupal\Core\Form\Form
     $form['field_tags']['#access'] = FALSE;
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Alter views exposed filter.
+ */
+function hello_world_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['sticky']['#options'][0] = "No sticky";
+  $form['sticky']['#options'][1] = "Sticky";
+}

@@ -1,0 +1,7 @@
+name: YouTube Video Formatter
+type: module
+description: YouTube Video field formatter to turn a video ID into a YouTube video.
+core_version_requirement: ^8 || ^9
+package: Custom
+dependencies:
+  - text

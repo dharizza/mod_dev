@@ -1,0 +1,7 @@
+download_files.download_files_form:
+  path: '/download-files'
+  defaults:
+    _form: '\Drupal\download_files\Form\DownloadFilesForm'
+    _title: 'Download a file'
+  requirements:
+    _permission: 'access download files form'

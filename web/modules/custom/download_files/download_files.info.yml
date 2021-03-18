@@ -1,0 +1,7 @@
+name: Download Files
+description: Form for downloading Files
+core_version_requirement: ^8 || ^9
+type: module
+package: Custom
+dependencies:
+  - file

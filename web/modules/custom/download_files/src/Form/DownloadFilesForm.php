@@ -42,15 +42,24 @@ class DownloadFilesForm extends FormBase {
   }
 
   public function getFiles() {
-    $query = \Drupal::database()->select('file_managed', 'f')
-      ->fields('f', ['filename', 'uri'])
-      ->execute()
-      ->fetchAll();
-    $files = [];
-    foreach ($query as $file) {
-      $files[$file->uri] = $file->filename;
+    // $query = \Drupal::database()->select('file_managed', 'f')
+    //   ->fields('f', ['filename', 'uri'])
+    //   ->execute()
+    //   ->fetchAll();
+    // $files = [];
+    // foreach ($query as $file) {
+    //   $files[$file->uri] = $file->filename;
+    // }
+    // return $files;
+    $fids = \Drupal::entityQuery('file')
+      ->condition('status', 1)
+      ->execute();
+    $files = \Drupal\file\Entity\File::loadMultiple($fids);
+    $options = [];
+    foreach ($files as $fid => $file) {
+      $options[$file->getFileUri()] = $file->getFilename();
     }
-    return $files;
+    return $options;
   }
 
   /**

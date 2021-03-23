@@ -58,8 +58,11 @@ class DownloadFilesForm extends FormBase {
     //   $files[$file->uri] = $file->filename;
     // }
     // return $files;
+    $config = \Drupal::config('download_files.settings');
+    $file_types = $config->get('file_types');
     $fids = \Drupal::entityQuery('file')
       ->condition('status', 1)
+      ->condition('filemime', $file_types, 'IN')
       ->execute();
     $files = \Drupal\file\Entity\File::loadMultiple($fids);
     $options = [];
